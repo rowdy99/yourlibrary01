@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Science-Book-Upload</title>
+    <link rel="icon" href="/img/reading.png" />
+    <link th:href="@{/css/styles.css}" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/3c78e2f7ea.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Ubuntu:wght@700&display=swap"
+          rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+    <!-- Vendor CSS Files -->
+    <link th:href="@{/vendor/aos/aos.css}" rel="stylesheet">
+    <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/vendor/bootstrap-icons/bootstrap-icons.css}" rel="stylesheet">
+    <link th:href="@{/vendor/boxicons/css/boxicons.min.css}" rel="stylesheet">
+    <link th:href="@{/vendor/glightbox/css/glightbox.min.css}" rel="stylesheet">
+    <link th:href="@{/vendor/remixicon/remixicon.css}" rel="stylesheet">
+    <link th:href="@{/vendor/swiper/swiper-bundle.min.css}" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link th:href="@{/css/styles.css}" rel="stylesheet" />
+
+    <!-- Latest compiled and minified CSS -->
+
+</head>
+<body class="admin-body">
+
+
+
+
+<!-- Page content holder -->
+<div class="page-content p-5" id="content">
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top " style="background-image:  linear-gradient( 135.9deg,  rgba(109,25,252,1) 16.4%, rgba(125,31,165,1) 56.1% );">
+        <div class="container d-flex align-items-center">
+
+
+
+            <img src="/img/reading.png" alt="..." width="60" height="60" class="mr-3 rounded-circle img-thumbnail shadow-sm">
+
+
+
+            <h1 class="logo me-auto"><a href="index.html">Your Library</a></h1>
+            <!-- Uncomment below if you prefer to use an image logo -->
+            <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+            <nav id="navbar" class="navbar">
+                <ul class="nav navbar-nav">
+
+
+                    <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/users">All-users</a></li>
+                </ul>
+
+                <ul>
+
+
+                    <li class="dropdown"><a href="#"><span>Upload ALL Books</span> <i class="bi bi-chevron-down"></i></a>
+                        <ul>
+                            <li><a href="/computerupload" th:href="@{/computerupload}">upload Computer books</a></li>
+                            <!--										<li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>-->
+
+                            <!--										<ul>-->
+                            <!--											<li><a href="#">Deep Drop Down 2</a></li>-->
+                            <!--											<li><a href="#">Deep Drop Down 3</a></li>-->
+                            <!--											<li><a href="#">Deep Drop Down 4</a></li>-->
+                            <!--											<li><a href="#">Deep Drop Down 5</a></li>-->
+                            <!--										</ul>-->
+                            <!--										</li>-->
+                            <li><a href="/scienceupload" th:href="@{/scienceupload}">upload Science books</a></li>
+                            <li><a href="/engineeringupload" th:href="@{/engineeringupload}">upload Engineering books</a></li>
+                            <li><a href="/biologicalupload" th:href="@{/biologicalupload}" >upload Biological books</a></li>
+                            <li><a href="/chemistryupload" th:href="@{/chemistryupload}" >upload Chemistry books</a></li>
+                            <li><a href="/mathupload" th:href="@{/mathupload}" >upload Mathematics books</a></li>
+                            <li><a href="#">Drop Down 4</a></li>
+                        </ul>
+                    </li>
+                    <li class="admin">
+                        <a href="/admin" th:href="@{/admin}" >
+                            Upload-Book
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/books" th:href="@{/books}" class="nav-link">
+                            Book Galary
+                        </a>
+                    </li>
+
+
+                    <li class="dropdown" sec:authorize="!isAuthenticated()"><a class="getstarted scrollto text-center" href="#"><span>Acoount</span> <i class="bi bi-chevron-down"></i></a>
+
+                        <ul>
+                            <li><a href="/registrasi"><span
+                                    class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+
+                            <li><a href="/login"><span
+                                    class="glyphicon glyphicon-log-in"></span>Login</a></li>
+
+                        </ul>
+                    </li>
+
+                    <ul class="nav navbar-nav navbar-right"
+                        sec:authorize="isAuthenticated()">
+                        <li class="dropdown"><a class="dropdown-toggle"
+                                                data-toggle="dropdown" href="#" sec:authentication="name"><span
+                                class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/logout">Logout</a></li>
+                            </ul></li>
+                    </ul>
+
+                    <form class="d-flex" id="searchbar" action="/search" method="get">
+                        <input aria-label="Search" class="form-control me-2" name="search" placeholder="Search" type="search">
+                        <button class="btn btn-info btn-sm " type="submit">Search</button>
+                    </form>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+
+            </nav><!-- .navbar -->
+
+        </div>
+    </header><!-- End Header -->
+
+
+
+
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+    <div class="py-4 px-3 mb-4 bg-light">
+        <div class="media  align-items-center">
+            <div class="book-body text-center">
+                <h1 class="brand text-center m-1">ADMIN ZONE</h1>
+                <h4 class="brand text-center m-1">upload science related books</h4>
+
+            </div>
+            <br>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 about-us">
+            <p class="about-title">Rules</p>
+            <ul>
+                <li>First click on the add book button.</li>
+                <li>Next, upload book details.</li>
+                <li>Click on submit button</li>
+                <li>Then, Upload books pdf</li>
+                <li>Return to this page</li>
+            </ul>
+        </div>
+
+        <div class="col-md-6">
+            <img  class="img-fluid" src="/img/books.png">
+        </div>
+        <a type="button" class="btn btn-secondary" style="margin-top: 100px;margin-bottom: 100px" href=""
+           data-toggle="modal" data-target="#exampleModal">Add Books</a>
+    </div>
+
+    <div class="container">
+
+        <!--            <div class="card-group ">-->
+        <!--                <div th:each="n:${books}">-->
+        <!--                    <form method="get" action="/EditBooks">-->
+        <!--                        <div class="card m-1" style="width: 18rem;">-->
+        <!--                            <div class="card-body">-->
+        <!--                                <h5 class="card-title" th:text="${n.bookName}" contenteditable="true" name="bookName"></h5>-->
+        <!--                                <h6 class="card-subtitle mb-2 text-muted" th:text="${n.authorName}" contenteditable="true" name="authorName"></h6>-->
+        <!--                                <h6 class="card-subtitle mb-2 text-muted" th:text="${n.price}" contenteditable="true" name="price"></h6>-->
+        <!--                                <p class="card-text" th:text="${n.id}"  name="id"></p>-->
+        <!--                                <p class="card-text" th:text="${n.docName}"  name="id"></p>-->
+        <!--                                <p class="card-text" th:text="${n.docType}"  name="id"></p>-->
+        <!--                                <a th:href="@{'/downloadFile/'+${n.id}}">Download</a>-->
+        <!--                                <a type="button" th:href="'/delete/'+${n.id}" class="card-link">Delete</a>-->
+        <!--                                <button type="submit" class="card-link">Edit</button>-->
+        <!--                                <a type="button" class="card-link" data-toggle="modal" th:attr="data-target='#c'+${n.id}">-->
+        <!--                                    Preview-->
+        <!--                                </a>-->
+        <!--                            </div>-->
+
+        <!--                        </div>-->
+        <!--                        &lt;!&ndash; Modal &ndash;&gt;-->
+        <!--                        <div class="modal fade bd-example-modal-lg" th:id="'c'+${n.id}" tabindex="-1" role="dialog"-->
+        <!--                             aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+        <!--                            <div class="modal-dialog modal-lg" role="document">-->
+        <!--                                <div class="modal-content">-->
+        <!--                                    <div class="modal-header">-->
+        <!--                                        <h5 class="modal-title" id="exampleModalLabel" th:text="${n.bookName}"></h5>-->
+        <!--                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+        <!--                                            <span aria-hidden="true">&times;</span>-->
+        <!--                                        </button>-->
+        <!--                                    </div>-->
+        <!--                                    <div class="modal-body" style="white-space: pre-wrap" th:text="${n.content}" contenteditable="true">-->
+
+        <!--                                    </div>-->
+        <!--                                </div>-->
+        <!--                            </div>-->
+        <!--                        </div>-->
+
+        <!--                </form>-->
+        <!--            </div>-->
+        <div class="py-4 px-3 mb-4 bg-light">
+            <div class="media  align-items-center">
+
+                <div class="book-body text-center">
+                    <h4 class="brand-admin text-center m-1">Recently Uploaded Books</h4>
+                </div>
+                <br>
+
+            </div>
+        </div>
+        <div class="card-group" >
+            <div th:each="n:${science}" >
+                <form method="get" action="/EditBooks">
+                    <div class="card m-1 bg-light" style="width: 18rem;">
+                        <div class="card-header"><h5 class="text-center" th:text="${n.bookName}"></h5></div>
+                        <div class="card-body">
+
+                            <p class="card-text text-center" th:text="${n.authorName}"></p>
+                            <p class="card-text" th:text="${n.id}"></p>
+                            <p class="card-text" th:text="${n.price}"></p>
+                            <p class="card-text" th:text="${n.id}"  name="id"></p>
+                            <p class="card-text" th:text="${n.docName}"  name="id"></p>
+                            <p class="card-text" th:text="${n.docType}"  name="id"></p>
+                            <a class="btn btn-primary btn-sm" th:href="@{'/downloadFile/'+${n.id}}">Download</a>
+                            <button type="button" class="btn btn-success btn-sm"  data-toggle="modal"  th:attr="data-target='#c'+${n.id}">
+                                Preview
+                            </button>
+                            <button type="submit" class="btn-primary ">Edit</button>
+                            <a type="button" th:href="'/science/delete/'+${n.id}" class="btn btn-danger m-1">Delete</a>
+
+                            <!-- Modal -->
+
+                            <div class="modal fade bd-example-modal-lg" th:id="'c'+${n.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel" th:text="${n.bookName}"></h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body" style="white-space: pre-wrap" th:text="${n.content}">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+
+
+
+
+
+
+
+<div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add Books</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/sciencebooks" method="post">
+
+                    <div class="form-group">
+                        <label for="name">Book Name</label>
+                        <input type="text" class="form-control" name="bookName" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="department">Author Name</label>
+                        <input type="text" class="form-control" name="authorName" id="department" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="department">Books Content</label>
+                        <textarea type="text" class="form-control" name="content" id="content" cols="8"
+                                  required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Price</label>
+                        <input type="text" class="form-control" name="price" id="phone" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script type="text/javascript" th:src="@{/js/main.js}"></script>
+<script th:src="@{/js/index.js}"></script>
+</body>
+</html>
